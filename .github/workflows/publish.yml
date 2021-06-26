@@ -18,10 +18,11 @@ jobs:
           registry-url: https://registry.npmjs.org
           always-auth: true
       - run: npm ci
-      - run: npx semantic-release
+      - run: npx semantic-release --branches main
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: akhilmhdh/contributors-readme-action@v2.1.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
